@@ -16,6 +16,7 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
+#include <cmath>
 
 
 #include "exception.hpp"
@@ -161,7 +162,7 @@ std::vector<float> world_map::perlin_noise
 		for (int rx = 0; rx < r_size_x; ++rx) 
 			randoms[ry * r_size_x + rx] =
 				(static_cast<float>(rand()) * 2 / RAND_MAX - 1) *
-				 sqrtf(static_cast<float>(octave) / max_octave);
+			  std::sqrt(static_cast<float>(octave) / max_octave);
 
 		for (int ry = 0; ry < r_size_y - 1; ++ry)
 		for (int rx = 0; rx < r_size_x - 1; ++rx) 
@@ -195,10 +196,10 @@ std::vector<float> world_map::perlin_noise
 
 	float maximum = 0;
 	for (int i = 0; i < size_x * size_y; ++i)
-		maximum = std::max(maximum, fabsf(result[i]));
+	  maximum = std::max(maximum, std::fabs(result[i]));
 
 	for (int i = 0; i < size_x * size_y; ++i)
-		result[i] = fabsf(result[i]) / maximum;
+	  result[i] = std::fabs(result[i]) / maximum;
 
 	return result;
 }

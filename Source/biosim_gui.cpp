@@ -83,7 +83,7 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	show_strength = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
 	bSizer5->Add( show_strength, 0, wxALL, 5 );
 	
-	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Stärke"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("StÃ¤rke"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1->Wrap( -1 );
 	bSizer5->Add( m_staticText1, 0, wxALL, 5 );
 	

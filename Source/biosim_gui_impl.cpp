@@ -158,7 +158,8 @@ void biosim_gui_impl::initialize_creature_prototypes()
 	}
 
 	select_creature->Select(0);
-	select_creature_event(wxCommandEvent());
+	wxCommandEvent foo = wxCommandEvent();
+	select_creature_event(foo);
 }
 
 

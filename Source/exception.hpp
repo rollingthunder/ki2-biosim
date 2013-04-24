@@ -26,7 +26,7 @@ namespace biosim
 class invalid_parameter : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+            virtual const char* what() const throw()
 			{ return "Invalid parameter."; }
 };
 
@@ -38,7 +38,7 @@ class invalid_parameter : public std::exception
 class file_operation_failed : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "File operation failed."; }
 };
 
@@ -50,7 +50,7 @@ class file_operation_failed : public std::exception
 class bounds_exceeded : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "Boundaries exceeded."; }
 };
 
@@ -62,7 +62,7 @@ class bounds_exceeded : public std::exception
 class assert_failed : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "Runtime assertion failed."; }
 };
 
@@ -74,7 +74,7 @@ class assert_failed : public std::exception
 class corrupt_data : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "Corrupt file encountered."; }
 };
 
@@ -86,7 +86,7 @@ class corrupt_data : public std::exception
 class unsupported_feature : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "An unsupported feature was used."; }
 };
 
@@ -98,7 +98,7 @@ class unsupported_feature : public std::exception
 class compression_failed : public std::exception
 {
 	public:
-		virtual const char* what() const NOTHROW
+		virtual const char* what() const throw()
 			{ return "Compression or decompression failed."; }
 };
 

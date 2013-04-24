@@ -54,6 +54,17 @@
 
 #endif
 
+#if defined(__GNUC__) || defined(__clang__)
+	#define COMPILER_GCC
+	#define COMPILER_STRING "COMPILER_GCC"
+
+	#define OS_TARGET_LINUX
+	#define OS_TARGET_STRING "OS_TARGET_LINUX"
+        #define MACHINE_TARGET_STRING "MACHINE_TARGET_X86"
+        #define BUILD_MODE_STRING "BUILD_MODE_DEBUG"
+
+#endif
+
 
 // Configuration success test
 #if !defined(COMPILER_STRING) || !defined(MACHINE_TARGET_STRING) || \
@@ -122,6 +133,21 @@
 
 #endif
 
+
+#if defined(COMPILER_GCC)
+
+	// Windows-specific, non-standard types.
+	typedef long long long_int;
+
+        typedef unsigned int pointer_int;
+
+        // we need to define NOTHROW ourselves
+	#define NOTHROW noexcept
+
+
+	// No need to define NULL
+
+#endif
 
 
 
