@@ -37,3 +37,8 @@ bool biosim_app::OnInit()
 
 
 } /* namespace biosim */
+
+// HA-AAAAACK!
+#ifndef main
+int main(int argc, char **argv) { ; ; return wxEntry(argc, argv); } 
+#endif
