@@ -1,9 +1,10 @@
 CC=clang++
 # ARCH=-arch i386 
 ARCH=
-CFLAGS=-std=c++11 -stdlib=libc++ -c -Wall $(ARCH)
+$DEBUGFLAGS=-g
+CFLAGS=-std=c++11 -stdlib=libc++ -c -Wall $(ARCH) $(DEBUGFLAGS)
 WXCPPFLAGS=$(shell wx-config --cppflags) -DHAVE_TYPE_TRAITS
-LDFLAGS=-stdlib=libc++ $(ARCH)
+LDFLAGS=-stdlib=libc++ $(ARCH) $(DEBUGFLAGS)
 WXLDFLAGS=$(shell wx-config std --libs)
 SOURCES=Source/biosim_app.cpp Source/biosim_gui.cpp Source/biosim_gui_impl.cpp Source/creature.cpp Source/image.cpp Source/model.cpp Source/sim_area_widget.cpp Source/world_map.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
