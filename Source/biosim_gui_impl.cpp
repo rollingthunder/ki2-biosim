@@ -62,10 +62,10 @@ void biosim_gui_impl::select_creature_event(wxCommandEvent& event)
 	const creature_prototype& proto =
 		*reinterpret_cast<const creature_prototype*>(data);
 	
-	show_strength->SetValue(wxString::Format("%i", proto.strength()));
-	show_speed->SetValue(wxString::Format("%i", proto.speed()));
-	show_lifetime->SetValue(wxString::Format("%i", proto.lifetime()));
-	show_properties->SetValue(proto.properties().c_str());
+	show_strength->SetValue(wxString::Format(_("%i"), proto.strength()));
+	show_speed->SetValue(wxString::Format(_("%i"), proto.speed()));
+	show_lifetime->SetValue(wxString::Format(_("%i"), proto.lifetime()));
+ 	show_properties->SetValue(wxString::FromUTF8(proto.properties().c_str()));
 }
 
 
@@ -154,7 +154,7 @@ void biosim_gui_impl::initialize_creature_prototypes()
 		 c != prototypes.end(); ++c)
 	{
 		select_creature->Append
-			(c->name().c_str(), const_cast<creature_prototype*>(&*c));
+ 			(wxString::FromUTF8(c->name().c_str()), const_cast<creature_prototype*>(&*c));
 	}
 
 	select_creature->Select(0);

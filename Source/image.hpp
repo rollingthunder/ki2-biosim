@@ -18,6 +18,8 @@
 #include <vector>
 #include <string>
 
+#include <memory>
+#include <cstring>
 
 namespace biosim
 {
