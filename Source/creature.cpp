@@ -50,19 +50,21 @@ std::list<creature_prototype>
 		std::getline(inputtext, line);
 
 		std::vector<std::string> split_line;
+		size_t nextstop = 0;
 		while (true)
 		{
-			size_t nextstop = line.find_first_of(',');
+			nextstop = line.find_first_of(',');
 			split_line.push_back(line.substr(0, nextstop));
 
-			if (nextstop == std::string::npos) break;
+			if (nextstop == std::string::npos || nextstop > 1000) 
+			        break;
 
 			line = line.substr(nextstop + 1);
 		}
 		
-		if (split_line.size() != 6)
+		if (split_line.size() != 6 || nextstop > 1000)
 		{
-			std::cerr << "Line in creature list has too few or too many entries." << std::endl;
+		        std::cerr << "Line in creature list has too few or too many entries. Nextstop = " << nextstop << ", split_line size is " << split_line.size() << std::endl;
 			continue;
 		}
 
@@ -104,6 +106,7 @@ creature_prototype::habitat_type
 		std::cerr << "Creature habitat was not specified." << std::endl;
 		throw corrupt_data();
 	}
+	std::cerr << "Never reached!" << std::endl;
 }
 
 
@@ -121,6 +124,7 @@ creature_prototype::sustentation_type
 		std::cerr << "Creature habitat was not specified." << std::endl;
 		throw corrupt_data();
 	}
+	std::cerr << "Never reached!" << std::endl;
 }
 
 
