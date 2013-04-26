@@ -62,7 +62,7 @@ std::list<creature_prototype>
 			line = line.substr(nextstop + 1);
 		}
 		
-		if (split_line.size() != 6 || nextstop > 1000)
+		if (split_line.size() != 6)
 		{
 		        std::cerr << "Line in creature list has too few or too many entries. Nextstop = " << nextstop << ", split_line size is " << split_line.size() << std::endl;
 			continue;

@@ -3,7 +3,7 @@ Seetang,3,0,800,Wasserbewohner Pflanze,wasser/seetang.tga
 Plankton,1,0,700,Wasserbewohner Pflanze,wasser/plankton.tga
 Gras,2,0,500,Landbewohner Pflanze,land/gras.tga
 Kaktus,5,0,1200,Landbewohner Pflanze,land/kaktus.tga
-Gebüsch,7,0,1500,Landbewohner Pflanze,land/busch.tga
+GebÃ¼sch,7,0,1500,Landbewohner Pflanze,land/busch.tga
 Sonnenblume,4,0,600,Landbewohner Pflanze,land/sonnenblume.tga
 Eiche,20,0,1800,Landbewohner Pflanze,land/eiche.tga
 Obstbaum,10,0,1500,Landbewohner Pflanze,land/birne.tga
@@ -18,5 +18,5 @@ Pferd,140,120,550,Landbewohner Pflanzenfresser,land/pferd.tga
 Emu,70,180,350,Landbewohner Pflanzenfresser,land/emu.tga
 Schaf,70,30,400,Landbewohner Pflanzenfresser,land/schaf.tga
 Hund,100,50,700,Landbewohner Fleischfresser,land/hund.tga
-Bär,250,30,650,Landbewohner Fleischfresser,land/ursus.tga
+BÃ¤r,250,30,650,Landbewohner Fleischfresser,land/ursus.tga
 Tiger,90,200,600,Landbewohner Fleischfresser,land/tiger.tga
