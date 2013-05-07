@@ -132,6 +132,8 @@ class creature
 		int x() const NOTHROW { return x_; }
 		int y() const NOTHROW { return y_; }
 
+		bool is_alive() const NOTHROW { return lifetime > 0; }
+
 		const creature_prototype& prototype;
 
 		int lifetime;

@@ -120,20 +120,26 @@ void sim_area_widget::paint_world(wxPaintEvent&)
 
 		for (world_tile::creature_iterator it(tile.begin()); it != tile.end(); ++it)
 		{
-			const creature_prototype *prototype = &((*it)->prototype);
-
-			std::map<const creature_prototype*, wxBitmap>::iterator find_graphics
-				(creature_bitmaps_.find(prototype));
-
-			if (find_graphics == creature_bitmaps_.end())
+			if((*it)->is_alive())
 			{
-				find_graphics =
-					creature_bitmaps_.insert
-						(std::pair<const creature_prototype*, wxBitmap>
-							(prototype, convert_to_bitmap(prototype->graphics()))).first;
-			}
 
-			dc.DrawBitmap(find_graphics->second, tilepos_x, tilepos_y);
+				const creature_prototype *prototype = &((*it)->prototype);
+
+				std::map<const creature_prototype*, wxBitmap>::iterator find_graphics
+					(creature_bitmaps_.find(prototype));
+
+				if (find_graphics == creature_bitmaps_.end())
+				{
+					find_graphics =
+						creature_bitmaps_.insert
+							(std::pair<const creature_prototype*, wxBitmap>
+								(prototype, convert_to_bitmap(prototype->graphics()))).first;
+				}
+
+				dc.DrawBitmap(find_graphics->second, tilepos_x, tilepos_y);
+			}
+			else
+				dc.DrawBitmap(dead_bitmap_, tilepos_x, tilepos_y);
 		}
 	}
 }

@@ -21,6 +21,14 @@
 namespace biosim
 {
 
+creature_prototype::habitat_type climate_to_habitat(const world_tile::climate_type& climate)
+{
+	if(climate <= world_tile::climate_type::shallow_water)
+		return creature_prototype::habitat_type::habitat_water;
+	else
+		return creature_prototype::habitat_type::habitat_land;
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 //
@@ -57,7 +65,28 @@ void model::create_creature_at_cursor
 
 void model::perform_step()
 {
+	std::vector<std::weak_ptr<creature>> removeable_creatures;
 
+	for(auto& c : creatures_)
+	{
+		
+		// hostile environment ? 
+		if(c->is_alive() && 
+			c->prototype.habitat() != climate_to_habitat(map_.at(c->x(), c->y()).climate()))
+		{
+			c->lifetime = std::max(0, c->lifetime - 50);
+		}
+		else
+		{
+			c->lifetime -= 1;
+		}
+
+		if(c->lifetime < -2)
+			removeable_creatures.push_back(c);
+	}
+
+	for(auto& c : removeable_creatures)
+		destroy_creature(c);
 }
 
 
