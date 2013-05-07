@@ -15,6 +15,8 @@
 #include "model.hpp"
 
 
+#include "decision_tree.hpp"
+
 namespace biosim
 {
 
@@ -106,12 +108,23 @@ void biosim_gui_impl::button_step_event(wxCommandEvent& event)
 {
 	if (step_timer_.IsRunning()) return;
 
+	auto true_action = std::make_shared<action<int>>([&](int i){
+		status_bar->SetStatusText(wxT("True"));
+	});
+	auto false_action = std::make_shared<action<int>>([&](int i){
+		status_bar->SetStatusText(wxT("False"));
+	});
+	inrange<int> test([](int i){return i;}, 0, 10, true_action, false_action);
+	int i2 = 11;
+	test.decide_action(i2).act(i2);
+
 	app_model_.perform_step();
 	sim_area->Refresh();
 }
 
 void biosim_gui_impl::timer_step_event(wxTimerEvent& event)
 {
+
 	app_model_.perform_step();
 	sim_area->Refresh();
 }
