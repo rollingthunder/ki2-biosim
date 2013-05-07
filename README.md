@@ -20,3 +20,7 @@ Author
 
 This was written by Tobias Werner for usage in the class.
 
+Georg Rollinger
+================
+
+Built using Visual Studio 2012 with wxWidgets x86 2.9.4

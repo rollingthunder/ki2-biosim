@@ -1,0 +1,13 @@
+/*.*sdf
+/*/bin/
+/*/obj/
+/*Debug/
+/*Release/
+/*x64/
+
+/*/Debug/
+/*/Release/
+/*/x64/
+/External/
+/Build/
+/Temp/
