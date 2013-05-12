@@ -89,11 +89,12 @@ void world_map::move_creature
 
 	if (x == c->x() && y == c->y()) return;
 
-	add_creature_to_tile(c);
 	remove_creature_from_tile(c);		
 
 	c->x_ = x;
 	c->y_ = y;
+
+	add_creature_to_tile(c);
 }
 
 

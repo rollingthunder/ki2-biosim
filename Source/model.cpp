@@ -69,6 +69,8 @@ void model::perform_step()
 
 	for(auto& c : creatures_)
 	{
+
+
 		
 		// hostile environment ? 
 		if(c->is_alive() && 

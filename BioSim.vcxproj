@@ -41,6 +41,7 @@
     <ClInclude Include="Source\model.hpp" />
     <ClInclude Include="Source\sim_area_widget.hpp" />
     <ClInclude Include="Source\world_map.hpp" />
+    <ClInclude Include="state_machine.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C924273A-7874-416A-9C89-68B274C13E54}</ProjectGuid>
