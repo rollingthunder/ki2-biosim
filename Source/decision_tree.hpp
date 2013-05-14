@@ -26,10 +26,18 @@ namespace biosim
 	};
 
 	template<typename T>
-	class action : public node<T>
+	class action : public node<T> 
+	{
+		static const std::shared_ptr<const action<T>> no_action;
+	};
+
+	
+
+	template<typename T>
+	class lambda_action : public action<T>
 	{
 	public:
-		static const std::shared_ptr<const action<T>> no_action;
+		
 
 		const std::function< void(T&) > act;
 
@@ -48,9 +56,24 @@ namespace biosim
 	
 
 	template<typename T>
-	class decision : public node<T>
-	{		
-		friend decision_tree<T>;
+	class decision;
+
+	template<typename T>
+	class dynamic_decision : public decision<T>
+	{
+	public:
+		dynamic_decision(const std::function<const std::shared_ptr<node<T>>(const T&)>& decision_lambda) : decision_lambda_(decision_lambda){}
+
+		const action<T>& decide_action(T& item) const {
+			return decision_lambda_(item)->decide_action(item);
+		}
+	private:
+		const std::function<const std::shared_ptr<node<T>>(const T&)> decision_lambda_;
+	};
+	
+	template<typename T>
+	class binary_decision : public decision<T>
+	{	
 
 	public:
 		const std::function<bool(const T&)> test;
@@ -106,11 +129,7 @@ namespace biosim
 
 
 	
-	template<typename T>
-	class decision_tree
-	{
-
-	};
+	
 }
 
 #endif

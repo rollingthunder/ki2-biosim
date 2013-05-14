@@ -146,10 +146,17 @@ class creature
 
 		int x_;
 		int y_;
+
+		
 };
 
 
-
+enum creature_state{
+	do_nothing,
+	eat,
+	run_away,
+	explore
+};
 
 } /* namespace biosim */
 

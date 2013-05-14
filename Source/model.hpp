@@ -16,10 +16,13 @@
 
 
 #include <memory>
+#include <map>
 
 
 #include "creature.hpp"
 #include "world_map.hpp"
+#include "decision_tree.hpp"
+#include "state_machine.hpp"
 
 
 namespace biosim
@@ -71,6 +74,7 @@ class model
 			(const std::weak_ptr<creature>& c, int x, int y);
 
 
+		std::map<creature_prototype::sustentation_type, std::shared_ptr<decision<creature>>> behaviors_;
 		std::list<creature_prototype> prototypes_;
 		std::list<std::shared_ptr<creature>> creatures_;
 		world_map map_;
