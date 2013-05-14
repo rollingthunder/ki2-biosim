@@ -57,6 +57,8 @@ class model
 
 		void perform_step();
 
+		std::list<std::shared_ptr<const creature>> locator(const int distance,const int x,const int y) const; 
+
 
 	private:
 

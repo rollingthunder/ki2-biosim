@@ -62,6 +62,16 @@ void model::create_creature_at_cursor
 	create_creature(prototype, cursor_x_, cursor_y_);
 }
 
+std::list<std::shared_ptr<const creature>> model::locator(const int distance,const int x,const int y) const
+{
+	std::list<std::shared_ptr<const creature>> near_creatures_;
+	std::copy_if(creatures_.cbegin(), creatures_.cend(), near_creatures_, [=](const std::shared_ptr<creature>& c){
+		return sqrt((c->x() - x) ^ 2 + (c->y() - y) ^ 2) <= distance;
+	});
+
+	return near_creatures_;
+}
+
 
 void model::perform_step()
 {
